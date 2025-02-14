@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HammockSpaceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -22,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
         return Inertia::render('Admin/Dashboard');
     })->name('admin.dashboard');
 
+    // API DASHBOARD
     Route::get('/api/admin/dashboard', [DashboardController::class, 'index']);
 });
 
@@ -30,10 +32,18 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->get('/admin/hammocks', function () {
     return Inertia::render('Admin/Hammocks');
 })->name('admin.hammocks');
+
+// API HAMACAS
 Route::get('/api/hammock-spaces', [HammockSpaceController::class, 'index']);
 Route::put('/api/hammock-spaces/{id}', [HammockSpaceController::class, 'update']);
 Route::delete('/api/hammock-spaces/{id}', [HammockSpaceController::class, 'destroy']);
 Route::post('/api/hammock-spaces', [HammockSpaceController::class, 'store']);
+
+// BOOKINGS
+Route::middleware(['auth'])->get('/admin/bookings', function () {
+    return Inertia::render('Admin/Bookings');
+})->name('admin.bookings');
+Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
 
 // AUTH
 Route::middleware('auth')->group(function () {
@@ -42,4 +52,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

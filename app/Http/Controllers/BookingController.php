@@ -45,9 +45,9 @@ class BookingController extends Controller
         return response()->json($booking);
     }
 
-    public function destroy(Booking $booking)
+    public function destroy($id)
     {
-        $booking->delete();
-        return response()->json(null, 204);
+        Booking::findOrFail($id)->delete();
+        return response()->json(['message' => 'Reserva eliminada']);
     }
 }
