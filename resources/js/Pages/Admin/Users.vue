@@ -1,20 +1,20 @@
 <template>
     <AdminLayout>
       <div class="container mt-4">
-        <h1 class="text-xl font-bold mb-4">Listado de Reservas</h1>
-        <BookingList />
+        <h1 class="text-xl font-bold mb-4">Listado</h1>
+        <UsersList />
       </div>
     </AdminLayout>
   </template>
 
   <script>
   import AdminLayout from "@/Layouts/AdminLayout.vue";
-  import BookingList from "@/Pages/Admin/components/ReservationsList.vue";
+  import UsersList from "@/Pages/Admin/components/UsersList.vue";
 
   export default {
     components: {
       AdminLayout,
-      BookingList,
+      UsersList,
     },
   };
   </script>

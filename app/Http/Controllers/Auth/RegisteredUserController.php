@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -32,7 +33,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -47,5 +48,26 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
+    }
+
+    public function index()
+    {
+        return response()->json(User::all());
+    }
+
+    // Obtener historial de reservas de un usuario
+    public function reservations($id)
+    {
+        $reservations = Booking::where('user_id', $id)->get();
+        return response()->json($reservations);
+    }
+
+    // Eliminar usuario y sus reservas
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->reservations()->delete(); // Borra las reservas del usuario
+        $user->delete(); // Borra el usuario
+        return response()->json(['message' => 'Usuario eliminado']);
     }
 }

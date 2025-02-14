@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HammockSpaceController;
 use App\Http\Controllers\ProfileController;
@@ -44,6 +45,17 @@ Route::middleware(['auth'])->get('/admin/bookings', function () {
     return Inertia::render('Admin/Bookings');
 })->name('admin.bookings');
 Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
+
+// USERS
+Route::middleware(['auth'])->get('/admin/users', function () {
+    return Inertia::render('Admin/Users');
+})->name('admin.users');
+Route::delete('/bookings/{id}', [RegisteredUserController::class, 'destroy']);
+
+// API USERS
+Route::get('/api/users/', [RegisteredUserController::class, 'index']); //
+Route::get('/api/users/{id}/reservations', [RegisteredUserController::class, 'reservations']); // Historial de reservas
+Route::delete('/api/users/{id}', [RegisteredUserController::class, 'destroy']); // Eliminar usuario
 
 // AUTH
 Route::middleware('auth')->group(function () {
