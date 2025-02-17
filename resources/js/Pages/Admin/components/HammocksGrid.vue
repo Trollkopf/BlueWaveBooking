@@ -79,7 +79,7 @@ export default {
     methods: {
         async loadGridData() {
             try {
-                const response = await axios.get("/api/hammock-spaces");
+                const response = await axios.get("/api/hammock-spaces/backoffice");
                 if (response.data.length > 0) {
                     this.gridMap = new Map(response.data.map(cell => [`${cell.row}-${cell.col}`, cell]));
                     this.rows = Math.max(...response.data.map(cell => cell.row)) + 1;

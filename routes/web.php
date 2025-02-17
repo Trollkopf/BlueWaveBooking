@@ -34,6 +34,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         return Inertia::render('Admin/Hammocks');
     })->name('admin.hammocks');
     Route::prefix('/api/hammock-spaces')->group(function () {
+        Route::get('/backoffice', [HammockSpaceController::class, 'indexBackoffice']);
         Route::get('/', [HammockSpaceController::class, 'index']);
         Route::post('/', [HammockSpaceController::class, 'store']);
         Route::put('/{id}', [HammockSpaceController::class, 'update']);
