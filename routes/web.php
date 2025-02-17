@@ -20,6 +20,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+// API Hamacas Pública
+Route::get('/api/hammock-spaces', [HammockSpaceController::class, 'index']);
 
 // Middleware para proteger rutas de administrador
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
@@ -35,11 +37,12 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     })->name('admin.hammocks');
     Route::prefix('/api/hammock-spaces')->group(function () {
         Route::get('/backoffice', [HammockSpaceController::class, 'indexBackoffice']);
-        Route::get('/', [HammockSpaceController::class, 'index']);
         Route::post('/', [HammockSpaceController::class, 'store']);
         Route::put('/{id}', [HammockSpaceController::class, 'update']);
         Route::delete('/{id}', [HammockSpaceController::class, 'destroy']);
     });
+
+
 
     // Gestión de reservas
     Route::get('/admin/bookings', function () {

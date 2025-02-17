@@ -31,9 +31,6 @@
                                     class="h-24 object-contain">
                             </button>
                         </template>
-                        <template v-else>
-                            <div class="w-16 h-16"></div> <!-- Espacio vacío -->
-                        </template>
                     </div>
                 </template>
             </div>

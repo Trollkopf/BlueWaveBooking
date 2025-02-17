@@ -6,32 +6,32 @@
             <nav class="mt-4">
                 <ul>
                     <li>
-                        <Link class="block p-3 hover:bg-blue-600" href="/dashboard">
+                        <Link class="block p-3 pl-5 hover:bg-blue-600" href="/dashboard">
                         📊 Dashboard
                         </Link>
                     </li>
                     <li>
-                        <Link class="block p-3 hover:bg-blue-600" href="/admin/hammocks">
+                        <Link class="block p-3 pl-5 hover:bg-blue-600" href="/admin/hammocks">
                         🌴 Hamacas
                         </Link>
                     </li>
                     <li>
-                        <Link class="block p-3 hover:bg-blue-600" href="/admin/bookings">
+                        <Link class="block p-3 pl-5 hover:bg-blue-600" href="/admin/bookings">
                         📅 Reservas
                         </Link>
                     </li>
                     <li>
-                        <Link class="block p-3 hover:bg-blue-600" href="/admin/users">
+                        <Link class="block p-3 pl-5 hover:bg-blue-600" href="/admin/users">
                         👥 Usuarios
                         </Link>
                     </li>
                     <li>
-                        <Link class="block p-3 hover:bg-blue-600" href="/admin/settings">
+                        <Link class="block p-3 pl-5 hover:bg-blue-600" href="/admin/settings">
                         ⚙ Configuración
                         </Link>
                     </li>
                     <li>
-                        <Link class="block p-3 bg-red-600 hover:bg-red-700 text-white mt-4" method="post" as="button"
+                        <Link class="block p-3 pl-5 bg-red-600 hover:bg-red-700 text-white" method="post" as="button"
                             href="/logout">
                         🚪 Cerrar sesión
                         </Link>
