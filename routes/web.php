@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HammockSpaceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     // Dashboard
     Route::get('/dashboard', function () {
         return Inertia::render('Admin/Dashboard');
-    })->name('admin.dashboard');
+    })->name('dashboard');
     Route::get('/api/admin/dashboard', [DashboardController::class, 'index']);
 
     // Gestión de hamacas
@@ -44,6 +45,18 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         return Inertia::render('Admin/Bookings');
     })->name('admin.bookings');
     Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
+
+    // Configuración
+    Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+        Route::get('/admin/settings', function () {
+            return Inertia::render('Admin/Settings');
+        })->name('admin.settings');
+
+        Route::prefix('/api/settings')->group(function () {
+            Route::get('/', [SettingController::class, 'index']); // Obtener configuración
+            Route::put('/', [SettingController::class, 'update']); // Guardar configuración
+        });
+    });
 
     // Gestión de usuarios
     Route::get('/admin/users', function () {

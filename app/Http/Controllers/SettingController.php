@@ -9,39 +9,33 @@ class SettingController extends Controller
 {
     public function index()
     {
-        return response()->json(Setting::all());
+        return response()->json(Setting::firstOrNew([]));
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'key' => 'required|string|unique:settings,key',
-            'value' => 'required|string'
-        ]);
-
-        $setting = Setting::create($request->all());
-        return response()->json($setting, 201);
-    }
 
     public function show(Setting $setting)
     {
         return response()->json($setting);
     }
 
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request)
     {
-        $request->validate([
-            'key' => 'sometimes|string|unique:settings,key,' . $setting->id,
-            'value' => 'sometimes|string'
-        ]);
+        $settings = Setting::firstOrNew([]);
+        $settings->fill($request->only([
+            'morning_start',
+            'morning_end',
+            'afternoon_start',
+            'afternoon_end',
+            'full_day_start',
+            'full_day_end',
+            'price_morning',
+            'price_afternoon',
+            'price_full_day',
+            'closed_from',
+            'closed_to'
+        ]));
+        $settings->save();
 
-        $setting->update($request->all());
-        return response()->json($setting);
-    }
-
-    public function destroy(Setting $setting)
-    {
-        $setting->delete();
-        return response()->json(null, 204);
+        return response()->json(['message' => 'Configuración guardada con éxito']);
     }
 }

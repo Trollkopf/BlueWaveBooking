@@ -1,15 +1,15 @@
 <template>
     <AdminSidebar>
-      <slot />
+        <slot />
     </AdminSidebar>
-  </template>
+</template>
 
-  <script>
-  import AdminSidebar from '@/Components/AdminSidebar.vue';
+<script>
+import AdminSidebar from '@/Components/AdminSidebar.vue';
 
-  export default {
+export default {
     components: {
-      AdminSidebar,
+        AdminSidebar,
     },
-  };
-  </script>
+};
+</script>

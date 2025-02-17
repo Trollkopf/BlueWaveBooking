@@ -1,26 +1,26 @@
 <template>
     <AdminLayout>
-      <div class="container mt-4">
-        <h1 class="text-xl font-bold mb-4">Listado</h1>
-        <UsersList />
-      </div>
+        <div class="container mt-4">
+            <h1 class="text-xl font-bold mb-4">Listado</h1>
+            <UsersList />
+        </div>
     </AdminLayout>
-  </template>
+</template>
 
-  <script>
-  import AdminLayout from "@/Layouts/AdminLayout.vue";
-  import UsersList from "@/Pages/Admin/components/UsersList.vue";
+<script>
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+import UsersList from "@/Pages/Admin/components/UsersList.vue";
 
-  export default {
+export default {
     components: {
-      AdminLayout,
-      UsersList,
+        AdminLayout,
+        UsersList,
     },
-  };
-  </script>
+};
+</script>
 
-  <style scoped>
-  .container {
+<style scoped>
+.container {
     padding: 20px;
-  }
-  </style>
+}
+</style>

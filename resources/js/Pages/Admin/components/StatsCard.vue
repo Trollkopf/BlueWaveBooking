@@ -1,37 +1,38 @@
 <template>
     <div class="bg-white p-4 shadow-md rounded-lg flex items-center space-x-4">
-      <div class="text-3xl">{{ icon }}</div>
-      <div>
-        <h3 class="text-lg font-semibold">{{ title }}</h3>
-        <p class="text-2xl font-bold">{{ value }}</p>
-      </div>
+        <div class="text-3xl">{{ icon }}</div>
+        <div>
+            <h3 class="text-lg font-semibold">{{ title }}</h3>
+            <p class="text-2xl font-bold">{{ value }}</p>
+        </div>
     </div>
-  </template>
+</template>
 
-  <script>
-  export default {
+<script>
+export default {
     props: {
-      title: {
-        type: String,
-        required: true
-      },
-      value: {
-        type: [String, Number],
-        required: true
-      },
-      icon: {
-        type: String,
-        required: true
-      }
+        title: {
+            type: String,
+            required: true
+        },
+        value: {
+            type: [String, Number],
+            required: true
+        },
+        icon: {
+            type: String,
+            required: true
+        }
     }
-  };
-  </script>
+};
+</script>
 
-  <style scoped>
-  .bg-white {
+<style scoped>
+.bg-white {
     transition: transform 0.2s ease-in-out;
-  }
-  .bg-white:hover {
+}
+
+.bg-white:hover {
     transform: scale(1.05);
-  }
-  </style>
+}
+</style>
