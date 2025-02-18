@@ -26,6 +26,11 @@
                         </Link>
                     </li>
                     <li>
+                        <Link class="block p-3 pl-5 hover:bg-blue-600" href="/admin/managers">
+                        🏢 Gerentes
+                        </Link>
+                    </li>
+                    <li>
                         <Link class="block p-3 pl-5 hover:bg-blue-600" href="/admin/settings">
                         ⚙ Configuración
                         </Link>

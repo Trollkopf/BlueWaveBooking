@@ -50,10 +50,23 @@ class RegisteredUserController extends Controller
         return redirect(route('dashboard', absolute: false));
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(User::all());
+        $search = $request->query('search');
+
+        $users = User::where('role', '!=', 'admin') // Excluir admins
+            ->where('id', '!=', auth()->id()) // Excluir usuario autenticado
+            ->when($search, function ($query, $search) {
+                return $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%");
+                });
+            })
+            ->paginate(5);
+
+        return response()->json($users);
     }
+
 
     // Obtener historial de reservas de un usuario
     public function reservations($id)

@@ -2,20 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
 use Faker\Factory as Faker;
 
-class DatabaseSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
         $faker = Faker::create();
 
         for ($i = 0; $i < 10; $i++) {
@@ -28,5 +27,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ]);
         }
+
     }
 }

@@ -11,11 +11,11 @@
 
         <!-- Textura del mar -->
         <div class="bg-repeat bg-top w-full h-24"
-            style="background-image: url('/images/mar.jpg'); background-size: 300px auto;"></div>
+            style="background-image: url('/images/mar.jpg'); background-size: auto 200px;"></div>
 
         <!-- Contenedor del mapa de hamacas con textura de arena -->
-        <div class="bg-repeat bg-center p-6 grid-container"
-            style="background-image: url('/images/arena.jpg'); background-size: 300px auto;">
+        <div class="bg-repeat bg-center grid-container"
+            style="background-image: url('/images/arena.jpg'); background-size: auto 200px;">
             <!-- Aviso de cierre -->
             <div v-if="isClosed" class="text-center bg-red-500 text-white p-2 rounded">
                 📢 El servicio está cerrado en esta fecha.

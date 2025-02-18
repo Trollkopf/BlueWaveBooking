@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HammockSpaceController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Middleware\AdminMiddleware;
@@ -42,7 +43,16 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::delete('/{id}', [HammockSpaceController::class, 'destroy']);
     });
 
+    // Rutas protegidas para administración de gerentes
+    Route::get('/admin/managers', function () {
+        return Inertia::render('Admin/Managers');
+    })->name('admin.managers');
 
+    // API para obtener la lista de usuarios con paginación y búsqueda
+    Route::get('/api/users', [ManagerController::class, 'index']);
+
+    // API para cambiar el rol de usuario a gerente o viceversa
+    Route::put('/api/users/{id}/role', [ManagerController::class, 'updateRole']);
 
     // Gestión de reservas
     Route::get('/admin/bookings', function () {
@@ -72,6 +82,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::delete('/{id}', [RegisteredUserController::class, 'destroy']);
     });
 });
+
 
 // Rutas de perfil de usuario
 Route::middleware('auth')->group(function () {
