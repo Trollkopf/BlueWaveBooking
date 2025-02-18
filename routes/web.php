@@ -14,13 +14,9 @@ use Inertia\Inertia;
 
 // Página de inicio
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Welcome/Welcome');
 });
+
 // API Hamacas Pública
 Route::get('/api/hammock-spaces', [HammockSpaceController::class, 'index']);
 
