@@ -87,4 +87,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Rutas reservas
+Route::middleware(['auth'])->group(function () {
+    Route::get('/api/bookings', [BookingController::class, 'index']);
+    Route::get('/api/bookings/{id}', [BookingController::class, 'show']);
+    Route::put('/api/bookings/{id}', [BookingController::class, 'update']);
+    Route::delete('/api/bookings/{id}', [BookingController::class, 'destroy']);
+});
+
+// Permitir que usuarios no autenticados hagan reservas
+Route::post('/api/bookings', [BookingController::class, 'store']);
 require __DIR__ . '/auth.php';

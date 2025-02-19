@@ -1,5 +1,6 @@
 <template>
-    <div class="relative min-h-screen">
+    <div class="relative min-h-screen bg-repeat bg-center grid-container"
+        style="background-image: url('/images/arena.jpg'); background-size: auto 200px;">
         <!-- Barra de navegación -->
         <NavBar :selectedDate="selectedDate" @updateDate="updateDate" />
 
@@ -15,12 +16,8 @@
         <HammockGrid :gridData="gridData" @openModal="openReservationModal" />
 
         <!-- Modal de reserva -->
-        <ReservationModal
-            v-if="showModal"
-            :selectedHammock="selectedHammock"
-            @closeModal="showModal = false"
-            @reserve="reserve"
-        />
+        <ReservationModal v-if="showModal" :selectedHammock="selectedHammock" :prices='this.prices'
+            @closeModal="showModal = false" @reserve="reserve" />
     </div>
 </template>
 
@@ -40,6 +37,7 @@ export default {
             gridData: [],
             showModal: false,
             selectedHammock: null,
+            prices: {},
         };
     },
     async mounted() {
@@ -49,9 +47,10 @@ export default {
         async loadHammocks() {
             try {
                 const response = await axios.get(`/api/hammock-spaces?date=${this.selectedDate}`);
-                console.log(response);
                 this.isClosed = response.data.isClosed;
                 this.gridData = response.data.hammocks || [];
+                this.prices = response.data.prices || {};
+
             } catch (error) {
                 console.error("Error loading hammocks:", error);
             }
@@ -66,8 +65,13 @@ export default {
         },
         async reserve(type) {
             try {
-                await axios.post('/api/bookings', { hammock_id: this.selectedHammock.id, date: this.selectedDate, type });
-                this.showModal = false;
+                await axios.post("/api/bookings", {
+                    hammock_id: this.selectedHammock.id,
+                    date: this.selectedDate,
+                    time_slot: type.type,
+                    comment: type.comment,
+                    type: type.type,
+                }); this.showModal = false;
                 this.loadHammocks();
             } catch (error) {
                 console.error("Error reservando:", error);

@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class HammockSpaceController extends Controller
 {
-    public function indexBackoffice() {
+    public function indexBackoffice()
+    {
         return response()->json(HammockSpace::all());
     }
 
@@ -17,8 +18,9 @@ class HammockSpaceController extends Controller
     {
         $selectedDate = $request->query('date'); // Obtener la fecha de la query string
 
-        // Verificar si el servicio está cerrado en esta fecha
+        // Obtener configuración de precios y fechas de cierre
         $settings = Setting::first();
+
         $isClosed = $settings && $settings->closed_from && $settings->closed_to &&
             $selectedDate >= $settings->closed_from && $selectedDate <= $settings->closed_to;
 
@@ -27,24 +29,41 @@ class HammockSpaceController extends Controller
             // Obtener reservas de esta hamaca en la fecha seleccionada
             $reservations = Booking::where('hammock_id', $hammock->id)
                 ->where('date', $selectedDate)
-                ->pluck('type')
+                ->pluck('time_slot')
                 ->toArray();
 
-            // Retornar la hamaca con su disponibilidad
+            // Ajustar las reservas según la lógica solicitada
+            $adjustedReservations = [];
+
+            if (in_array('morning', $reservations) && in_array('afternoon', $reservations)) {
+                $adjustedReservations[] = 'full'; // Si tiene morning y afternoon, marcamos como full
+            } elseif (in_array('morning', $reservations)) {
+                $adjustedReservations[] = 'Tarde'; // Si tiene morning, devolvemos afternoon
+            } elseif (in_array('afternoon', $reservations)) {
+                $adjustedReservations[] = 'Mañana'; // Si tiene afternoon, devolvemos morning
+            }
+
             return [
                 'id' => $hammock->id,
                 'row' => $hammock->row,
                 'col' => $hammock->col,
                 'hammocks' => $hammock->hammocks,
-                'reservations' => $reservations, // Tipos de reservas en esa fecha (morning, afternoon, full)
+                'reservations' => $adjustedReservations,
             ];
         });
 
         return response()->json([
             'isClosed' => $isClosed,
             'hammocks' => $hammocks,
+            'prices' => [
+                'morning' => $settings->price_morning ?? 0,
+                'afternoon' => $settings->price_afternoon ?? 0,
+                'full' => $settings->price_full_day ?? 0,
+            ],
         ]);
     }
+
+
 
     public function update(Request $request, $id)
     {
