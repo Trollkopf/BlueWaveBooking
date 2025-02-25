@@ -42,7 +42,8 @@ export default {
     methods: {
         async loadReservations() {
             try {
-                const response = await axios.get("/api/reservations");
+                const response = await axios.get("/api/bookings");
+                console.log(response);
                 this.reservations = response.data;
             } catch (error) {
                 console.error("Error loading reservations:", error);
@@ -58,7 +59,7 @@ export default {
         async deleteReservation(id) {
             if (confirm("¿Estás seguro de eliminar esta reserva?")) {
                 try {
-                    await axios.delete(`/api/reservations/${id}`);
+                    await axios.delete(`/api/bookings/${id}`);
                     this.reservations = this.reservations.filter(res => res.id !== id);
                 } catch (error) {
                     console.error("Error deleting reservation:", error);
