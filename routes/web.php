@@ -60,6 +60,9 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         return Inertia::render('Admin/Bookings');
     })->name('admin.bookings');
     Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
+    Route::get('/bookings/today', [BookingController::class, 'today']);
+    Route::get('/bookings/upcoming', [BookingController::class, 'upcoming']);
+    Route::get('/bookings', [BookingController::class, 'searchByDate']);
 
     // Configuración
     Route::middleware(['auth', AdminMiddleware::class])->group(function () {

@@ -54,11 +54,11 @@ class BookingController extends Controller
             'time_slot' => $request->type,
             'comment' => $request->comment ?? null,
             'status' => $status,
-            'type'=> $request->type,
+            'type' => $request->type,
             'price' => $request->price,
-            'name' =>$request->name,
-            'email' =>$request->email,
-            'phone'=>$request->phone
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone
 
         ]);
 
@@ -176,5 +176,33 @@ class BookingController extends Controller
     private function determineBookingStatus(User $user)
     {
         return $user->role === 'manager' ? 'confirmed' : 'pending';
+    }
+
+    public function today()
+    {
+        $today = now()->toDateString();
+        return Booking::with(['user', 'hammock'])
+            ->where('date', $today)
+            ->latest()
+            ->paginate(10);
+    }
+
+    // Reservas futuras
+    public function upcoming()
+    {
+        return Booking::with(['user', 'hammock'])
+            ->where('date', '>', now()->toDateString())
+            ->latest()
+            ->paginate(10);
+    }
+
+    // Buscar reservas por fecha
+    public function searchByDate(Request $request)
+    {
+        $date = $request->query('date');
+        return Booking::with(['user', 'hammock'])
+            ->where('date', $date)
+            ->latest()
+            ->paginate(10);
     }
 }
