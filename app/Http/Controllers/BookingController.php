@@ -12,14 +12,26 @@ use Illuminate\Validation\ValidationException;
 
 class BookingController extends Controller
 {
-    public function index()
+    /**
+     * Listar reservas con paginación.
+     */
+    public function index(Request $request)
     {
-        return response()->json(Booking::all());
+        $reservations = Booking::with(['user', 'hammock'])
+            ->latest()
+            ->paginate(10);
+
+        return response()->json($reservations);
     }
 
+    /**
+     * Crear una nueva reserva.
+     */
     public function store(Request $request)
     {
-        // Validar solicitud
+
+        // return ($request);
+        // Validar la solicitud
         $this->validateBookingRequest($request);
 
         // Obtener usuario o crear uno temporal
@@ -28,10 +40,10 @@ class BookingController extends Controller
         // Verificar disponibilidad de la hamaca
         $this->checkHammockAvailability($request);
 
-        // Obtener el precio según la configuración
+        // Obtener el precio de la reserva
         $price = $this->getPrice($request->time_slot);
 
-        // Definir el estado inicial de la reserva
+        // Determinar estado de la reserva
         $status = $this->determineBookingStatus($user);
 
         // Crear la reserva
@@ -39,10 +51,15 @@ class BookingController extends Controller
             'user_id' => $user->id,
             'hammock_id' => $request->hammock_id,
             'date' => $request->date,
-            'time_slot' => $request->time_slot,
+            'time_slot' => $request->type,
+            'comment' => $request->comment ?? null,
             'status' => $status,
-            'price' => $price,
-            'comments' => $request->comments ?? null,
+            'type'=> $request->type,
+            'price' => $request->price,
+            'name' =>$request->name,
+            'email' =>$request->email,
+            'phone'=>$request->phone
+
         ]);
 
         return response()->json([
@@ -52,23 +69,33 @@ class BookingController extends Controller
         ], 201);
     }
 
+    /**
+     * Mostrar una reserva específica.
+     */
     public function show(Booking $booking)
     {
         return response()->json($booking);
     }
 
+    /**
+     * Actualizar una reserva existente.
+     */
     public function update(Request $request, Booking $booking)
     {
         $request->validate([
             'date' => 'sometimes|date',
             'time_slot' => 'sometimes|in:morning,afternoon,full',
-            'status' => 'sometimes|in:pending,confirmed,cancelled'
+            'status' => 'sometimes|in:pending,confirmed,cancelled',
+            'comment' => 'nullable|string|max:500',
         ]);
 
         $booking->update($request->all());
         return response()->json($booking);
     }
 
+    /**
+     * Eliminar una reserva.
+     */
     public function destroy($id)
     {
         Booking::findOrFail($id)->delete();
@@ -84,12 +111,11 @@ class BookingController extends Controller
 
         $request->validate([
             'hammock_id' => 'required|exists:hammock_spaces,id',
-            'date' => 'required|date',
+            'date' => 'required|date|after_or_equal:today',
             'time_slot' => 'required|in:morning,afternoon,full',
             'name' => $user ? 'nullable' : 'required|string|min:3',
             'email' => $user ? 'nullable' : 'required|email',
             'phone' => $user ? 'nullable' : 'required|string|min:9',
-            'type' => 'required|in:morning,afternoon,full',
             'comment' => 'nullable|string|max:500',
         ]);
     }
@@ -152,5 +178,3 @@ class BookingController extends Controller
         return $user->role === 'manager' ? 'confirmed' : 'pending';
     }
 }
-
-

@@ -16,8 +16,8 @@
         <HammockGrid :gridData="gridData" @openModal="openReservationModal" />
 
         <!-- Modal de reserva -->
-        <ReservationModal v-if="showModal" :selectedHammock="selectedHammock" :prices='this.prices'
-            @closeModal="showModal = false" @reserve="reserve" />
+        <ReservationModal v-if="showModal" :selectedHammock="selectedHammock" :selectedDate="selectedDate" :prices='this.prices'
+            @closeModal="showModal = false" @reserve="reserve"  @refreshGrid="loadHammocks"/>
     </div>
 </template>
 

@@ -20,6 +20,10 @@ class Booking extends Model
         'status',
         'price',
         'comments',
+        'type',
+        'name',
+        'email',
+        'phone'
     ];
 
     /**

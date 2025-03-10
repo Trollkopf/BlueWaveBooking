@@ -9,12 +9,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 // Página de inicio
 Route::get('/', function () {
     return Inertia::render('Welcome/Welcome');
+});
+
+Route::middleware('auth:sanctum')->get('/api/user', function (Request $request) {
+    return response()->json($request->user());
 });
 
 // API Hamacas Pública

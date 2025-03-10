@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('hammock_id')->constrained('hammock_spaces')->onDelete('cascade');
             $table->date('date'); // Fecha de la reserva
-            $table->enum('time_slot', ['morning', 'afternoon', 'full_day']); // Franja horaria
+            $table->enum('time_slot', ['morning', 'afternoon', 'full']); // Franja horaria
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->timestamps();
         });

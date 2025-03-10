@@ -52,37 +52,37 @@
 
 <script>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import StatsCard from "@/Pages/Admin/components/StatsCard.vue";
-import ReservationsTable from "@/Pages/Admin/components/ReservationsTable.vue";
-import HammocksStatus from "@/Pages/Admin/components/HammocksStatus.vue";
 import axios from "axios";
 
 export default {
-    data() {
-        return {
-            totals: {
-                today: { reservations: 0, available: 0, users: 0 },
-                week: { reservations: 0, available: 0, users: 0 },
-                month: { reservations: 0, available: 0, users: 0 }
-            },
-            recentReservations: []
-        };
-    },
-    async mounted() {
-        await this.fetchDashboardData();
-    },
-    methods: {
-        async fetchDashboardData() {
-            try {
-                const response = await axios.get('/api/admin/dashboard');
-                this.totals = response.data.totals;
-                this.recentReservations = response.data.recentReservations;
-            } catch (error) {
-                console.error("Error al cargar los datos del dashboard:", error);
+        components: {
+            AdminLayout
+        },
+        data() {
+            return {
+                totals: {
+                    today: { reservations: 0, available: 0, users: 0 },
+                    week: { reservations: 0, available: 0, users: 0 },
+                    month: { reservations: 0, available: 0, users: 0 }
+                },
+                recentReservations: []
+            };
+        },
+        async mounted() {
+            await this.fetchDashboardData();
+        },
+        methods: {
+            async fetchDashboardData() {
+                try {
+                    const response = await axios.get('/api/admin/dashboard');
+                    this.totals = response.data.totals;
+                    this.recentReservations = response.data.recentReservations;
+                } catch (error) {
+                    console.error("Error al cargar los datos del dashboard:", error);
+                }
             }
         }
-    }
-};
+    };
 </script>
 
 <style scoped>

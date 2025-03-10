@@ -35,7 +35,7 @@ class HammockSpaceController extends Controller
             // Ajustar las reservas según la lógica solicitada
             $adjustedReservations = [];
 
-            if (in_array('morning', $reservations) && in_array('afternoon', $reservations)) {
+            if ((in_array('morning', $reservations) && in_array('afternoon', $reservations)) || in_array('full', $reservations)) {
                 $adjustedReservations[] = 'full'; // Si tiene morning y afternoon, marcamos como full
             } elseif (in_array('morning', $reservations)) {
                 $adjustedReservations[] = 'Tarde'; // Si tiene morning, devolvemos afternoon
