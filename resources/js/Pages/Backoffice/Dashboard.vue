@@ -60,7 +60,6 @@
 import axios from 'axios';
 import BackofficeLayout from '@/Layouts/BackofficeLayout.vue';
 
-
 export default {
     components: { BackofficeLayout },
     data() {
