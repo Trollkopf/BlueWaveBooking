@@ -18,9 +18,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome/Welcome');
 });
 
-Route::middleware('auth:sanctum')->get('/api/user', function (Request $request) {
-    return response()->json($request->user());
-});
+Route::middleware('auth:sanctum')->get('/api/user', fn(Request $request) => response()->json($request->user()));
 
 // API Hamacas Pública
 Route::get('/api/hammock-spaces', [HammockSpaceController::class, 'index']);
@@ -28,15 +26,11 @@ Route::get('/api/hammock-spaces', [HammockSpaceController::class, 'index']);
 // Middleware para proteger rutas de administrador
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     // Dashboard
-    Route::get('/dashboard', function () {
-        return Inertia::render('Admin/Dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', fn() => Inertia::render('Admin/Dashboard'))->name('dashboard');
     Route::get('/api/admin/dashboard', [DashboardController::class, 'index']);
 
     // Gestión de hamacas
-    Route::get('/admin/hammocks', function () {
-        return Inertia::render('Admin/Hammocks');
-    })->name('admin.hammocks');
+    Route::get('/admin/hammocks', fn() => Inertia::render('Admin/Hammocks'))->name('admin.hammocks');
     Route::prefix('/api/hammock-spaces')->group(function () {
         Route::get('/backoffice', [HammockSpaceController::class, 'indexBackoffice']);
         Route::post('/', [HammockSpaceController::class, 'store']);
@@ -45,9 +39,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     });
 
     // Rutas protegidas para administración de gerentes
-    Route::get('/admin/managers', function () {
-        return Inertia::render('Admin/Managers');
-    })->name('admin.managers');
+    Route::get('/admin/managers', fn() => Inertia::render('Admin/Managers'))->name('admin.managers');
 
     // API para obtener la lista de usuarios con paginación y búsqueda
     Route::get('/api/users', [ManagerController::class, 'index']);
@@ -56,9 +48,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::put('/api/users/{id}/role', [ManagerController::class, 'updateRole']);
 
     // Gestión de reservas
-    Route::get('/admin/bookings', function () {
-        return Inertia::render('Admin/Bookings');
-    })->name('admin.bookings');
+    Route::get('/admin/bookings', fn() => Inertia::render('Admin/Bookings'))->name('admin.bookings');
     Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
     Route::get('/bookings/today', [BookingController::class, 'today']);
     Route::get('/bookings/upcoming', [BookingController::class, 'upcoming']);

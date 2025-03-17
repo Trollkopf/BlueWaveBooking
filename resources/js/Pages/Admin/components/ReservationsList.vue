@@ -1,16 +1,11 @@
 <template>
     <div class="bg-white p-4 shadow-md rounded-lg">
-        <h2 class="text-lg font-bold mb-3">Reservas de Hoy ({{ todayDate }})</h2>
+        <h2 class="text-lg font-bold mb-3">Reservas del {{ formatDate(this.searchDate || todayDate) }}</h2>
 
         <!-- Botones de Filtros -->
         <div class="flex gap-4 mb-4">
-            <button @click="fetchReservations('/api/bookings/upcoming')"
-                    class="px-4 py-2 bg-green-500 text-white rounded">
-                📅 Ver Próximas Reservas
-            </button>
-            <button @click="showHistoryModal = true"
-                    class="px-4 py-2 bg-blue-500 text-white rounded">
-                📜 Historial de Reservas
+            <button @click="showHistoryModal = true" class="px-4 py-2 bg-blue-500 text-white rounded">
+                📅 Ver Otras fechas
             </button>
         </div>
 
@@ -39,15 +34,13 @@
 
         <!-- Paginación -->
         <div class="mt-4 flex justify-between items-center">
-            <button @click="fetchReservations(reservations.prev_page_url)"
-                    :disabled="!reservations.prev_page_url"
-                    class="px-4 py-2 bg-gray-300 rounded disabled:opacity-50">
+            <button @click="fetchReservations(reservations.prev_page_url)" :disabled="!reservations.prev_page_url"
+                class="px-4 py-2 bg-gray-300 rounded disabled:opacity-50">
                 ◀ Anterior
             </button>
             <span>Página {{ reservations.current_page }} de {{ reservations.last_page }}</span>
-            <button @click="fetchReservations(reservations.next_page_url)"
-                    :disabled="!reservations.next_page_url"
-                    class="px-4 py-2 bg-gray-300 rounded disabled:opacity-50">
+            <button @click="fetchReservations(reservations.next_page_url)" :disabled="!reservations.next_page_url"
+                class="px-4 py-2 bg-gray-300 rounded disabled:opacity-50">
                 Siguiente ▶
             </button>
         </div>
@@ -73,10 +66,6 @@
     </div>
 </template>
 
----
-
-### 📌 **Script actualizado**
-```vue
 <script>
 import axios from 'axios';
 
@@ -97,15 +86,20 @@ export default {
     },
     computed: {
         filteredReservations() {
-            // Filtra solo las reservas de hoy
-            return this.reservations.data.filter(res => res.date === this.todayDate);
+            return this.reservations.data.filter(res => res.date);
         }
     },
     mounted() {
         this.fetchReservations();
     },
     methods: {
-        async fetchReservations(url = "/api/bookings/today") {
+        formatDate(dateString) {
+            if (!dateString) return "Fecha no disponible";
+
+            const options = { year: 'numeric', month: 'long', day: '2-digit' };
+            return new Date(dateString).toLocaleDateString('es-ES', options);
+        },
+        async fetchReservations(url = "/bookings/today") {
             try {
                 const response = await axios.get(url);
                 this.reservations = response.data;
@@ -117,7 +111,7 @@ export default {
             if (!this.searchDate) return;
 
             try {
-                const response = await axios.get(`/api/bookings?date=${this.searchDate}`);
+                const response = await axios.get(`/bookings?date=${this.searchDate}`);
                 this.reservations = response.data;
                 this.showHistoryModal = false;
             } catch (error) {

@@ -74,6 +74,14 @@ const submit = () => {
                     Entrar
                 </PrimaryButton>
             </div>
+            <hr class="mt-4">
+            <div class="mt-4 flex items-center justify-center">
+                <Link :href="route('register')"
+                    class="rounded-md text-sm text-teal-600 underline hover:text-teal-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                ¿Eres nuevo? ¡Reg&iacute;strate aqu&iacute;!
+                </Link>
+
+            </div>
         </form>
     </GuestLayout>
 </template>
