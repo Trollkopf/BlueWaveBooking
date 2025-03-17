@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $user = $request->user();
+
+        return redirect($user->role === 'admin' || $user->role === 'manager' ? route('admin.dashboard') : route('backoffice.dashboard'));
+
+    }
+
+    private function getRedirectUrl(User $user): string
+    {
+        if ($user->role === 'admin' || $user->role === 'manager') {
+            return route('admin.dashboard'); // Redirige al panel de administración
+        }
+        return route('backoffice.dashboard'); // Redirige al área de clientes
     }
 
     /**

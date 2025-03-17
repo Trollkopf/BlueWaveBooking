@@ -8,15 +8,14 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 // Página de inicio
-Route::get('/', function () {
-    return Inertia::render('Welcome/Welcome');
-});
+Route::get('/', fn() => Inertia::render('Welcome/Welcome'));
 
 Route::middleware('auth:sanctum')->get('/api/user', fn(Request $request) => response()->json($request->user()));
 
@@ -24,10 +23,13 @@ Route::middleware('auth:sanctum')->get('/api/user', fn(Request $request) => resp
 Route::get('/api/hammock-spaces', [HammockSpaceController::class, 'index']);
 
 // Middleware para proteger rutas de administrador
-Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    // Dashboard
-    Route::get('/dashboard', fn() => Inertia::render('Admin/Dashboard'))->name('dashboard');
-    Route::get('/api/admin/dashboard', [DashboardController::class, 'index']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/backoffice', fn() => Inertia::render('Backoffice/Dashboard'))->name('backoffice.dashboard');
+
+    Route::middleware([RoleMiddleware::class . ':admin,manager'])->group(function () {
+        Route::get('/dashboard', fn() => Inertia::render('Admin/Dashboard'))->name('admin.dashboard');
+    });
+
 
     // Gestión de hamacas
     Route::get('/admin/hammocks', fn() => Inertia::render('Admin/Hammocks'))->name('admin.hammocks');
