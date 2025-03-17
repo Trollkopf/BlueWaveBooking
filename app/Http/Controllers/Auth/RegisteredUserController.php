@@ -69,6 +69,18 @@ class RegisteredUserController extends Controller
         return response()->json($users);
     }
 
+    public function getUser()
+    {
+        return response()->json(Auth::user());
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->update($request->only(['name', 'phone']));
+        return response()->json(['message' => 'Perfil actualizado']);
+    }
+
 
     // Obtener historial de reservas de un usuario
     public function reservations($id)
