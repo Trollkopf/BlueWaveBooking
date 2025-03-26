@@ -9,19 +9,19 @@
                 <div class="bg-white p-4 shadow rounded">
                     <h2 class="text-lg font-semibold">Hoy</h2>
                     <p>Total Reservas: {{ totals.today.reservations }}</p>
-                    <p>Hamacas Disponibles: {{ totals.today.available }}</p>
+                    <p>Ingresos Totales: {{ totals.today.income }} €</p>
                     <p>Usuarios Registrados: {{ totals.today.users }}</p>
                 </div>
                 <div class="bg-white p-4 shadow rounded">
                     <h2 class="text-lg font-semibold">Última Semana</h2>
                     <p>Total Reservas: {{ totals.week.reservations }}</p>
-                    <p>Hamacas Disponibles: {{ totals.week.available }}</p>
+                    <p>Ingresos Totales: {{ totals.week.income }} €</p>
                     <p>Usuarios Registrados: {{ totals.week.users }}</p>
                 </div>
                 <div class="bg-white p-4 shadow rounded">
                     <h2 class="text-lg font-semibold">Último Mes</h2>
                     <p>Total Reservas: {{ totals.month.reservations }}</p>
-                    <p>Hamacas Disponibles: {{ totals.month.available }}</p>
+                    <p>Ingresos Totales: {{ totals.month.income }} €</p>
                     <p>Usuarios Registrados: {{ totals.month.users }}</p>
                 </div>
             </div>

@@ -16,13 +16,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+
+        $this->call(BookingSeeder::class);
+
         $faker = Faker::create();
 
         for ($i = 0; $i < 10; $i++) {
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->unique()->safeEmail,
-                'password' => Hash::make('password'), // Contraseña genérica
+                'password' => Hash::make('test1234'), // Contraseña genérica
                 'role' => 'user',
                 'created_at' => now(),
                 'updated_at' => now(),
