@@ -3,8 +3,6 @@
         <div class="bg-white p-6 rounded-lg shadow-lg w-1/3">
             <h3 class="text-lg font-bold mb-3">Reservar Hamaca</h3>
 
-            <p v-if="selectedHammock">Disponibilidad: {{ getAvailability(selectedHammock) }}</p>
-
             <!-- Input para comentario -->
             <div class="mb-4">
                 <label for="comment" class="block font-semibold">Comentario (Opcional):</label>
@@ -75,10 +73,6 @@
     </div>
 </template>
 
----
-
-## 📌 **Script corregido:**
-```vue
 <script>
 import axios from 'axios';
 
@@ -110,10 +104,42 @@ export default {
             }
         },
         getAvailability(hammock) {
-            return hammock.reservations.length === 0 ? 'Disponible todo el día' : hammock.reservations.join(', ');
+            const allSlots = ['morning', 'afternoon', 'full'];
+            const reserved = hammock.reservations;
+            const available = allSlots.filter(slot => !reserved.includes(slot));
+
+            const map = {
+                morning: "Mañana",
+                afternoon: "Tarde",
+                full: "Día Completo"
+            };
+
+            if (reserved.includes('full')) {
+                return 'No disponible';
+            }
+
+            if (available.length === 0) {
+                return 'No disponible';
+            }
+
+            return 'Disponible: ' + available.map(s => map[s]).join(', ');
         },
-        canReserve(type) {
-            return !this.selectedHammock.reservations.includes(type);
+        canReserve(slot) {
+            const reserved = this.selectedHammock.reservations;
+
+            // Si está reservado full, no puede reservar nada
+            if (reserved.includes('full')) return false;
+
+            // Si quiere reservar full, pero hay mañana o tarde, no se puede
+            if (slot === 'full' && (reserved.includes('morning') || reserved.includes('afternoon'))) return false;
+
+            // Si quiere reservar mañana pero ya está ocupada
+            if (slot === 'morning' && reserved.includes('morning')) return false;
+
+            // Si quiere reservar tarde pero ya está ocupada
+            if (slot === 'afternoon' && reserved.includes('afternoon')) return false;
+
+            return true; // está disponible
         },
         attemptReservation(type) {
             if (!this.userAuthenticated) {

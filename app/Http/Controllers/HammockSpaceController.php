@@ -32,24 +32,14 @@ class HammockSpaceController extends Controller
                 ->pluck('time_slot')
                 ->toArray();
 
-            // Ajustar las reservas según la lógica solicitada
-            $adjustedReservations = [];
-
-            if ((in_array('morning', $reservations) && in_array('afternoon', $reservations)) || in_array('full', $reservations)) {
-                $adjustedReservations[] = 'full'; // Si tiene morning y afternoon, marcamos como full
-            } elseif (in_array('morning', $reservations)) {
-                $adjustedReservations[] = 'Tarde'; // Si tiene morning, devolvemos afternoon
-            } elseif (in_array('afternoon', $reservations)) {
-                $adjustedReservations[] = 'Mañana'; // Si tiene afternoon, devolvemos morning
-            }
-
             return [
                 'id' => $hammock->id,
                 'row' => $hammock->row,
                 'col' => $hammock->col,
                 'hammocks' => $hammock->hammocks,
-                'reservations' => $adjustedReservations,
+                'reservations' => $reservations, // no los transformes
             ];
+
         });
 
         return response()->json([

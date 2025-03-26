@@ -1,5 +1,5 @@
 <template>
-    <div class="grid-container bg-repeat bg-center"
+    <div class="grid-container bg-repeat bg-center justify-content-center text-center"
         style="background-image: url('/images/arena.jpg'); background-size: auto 200px;">
         <div :style="gridStyle" class="grid gap-2 mt-4">
             <template v-for="rowIndex in rows" :key="rowIndex">
@@ -44,13 +44,17 @@ export default {
             }
 
             const type = hammock.hammocks === 2 ? 'hammock2' : 'hammock1';
+            const reserved = hammock.reservations;
+
+            const isFullDay = reserved.includes('full') ||
+                (reserved.includes('morning') && reserved.includes('afternoon'));
 
 
-            if (hammock.reservations.includes('full')) {
+            if (isFullDay) {
                 return `/images/${type}f.png`; // Reservada todo el día
-            } else if (hammock.reservations.includes('Mañana')) {
+            } else if (hammock.reservations.includes('morning')) {
                 return `/images/${type}m.png`; // Reservada por la mañana
-            } else if (hammock.reservations.includes('Tarde')) {
+            } else if (hammock.reservations.includes('afternoon')) {
                 return `/images/${type}t.png`; // Reservada por la tarde
             } else {
                 return `/images/${type}.png`; // Disponible
