@@ -7,9 +7,10 @@ import { Link } from '@inertiajs/vue3';
     <div class="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0">
         <div>
             <Link href="/">
-            <ApplicationLogo class="h-72 w-auto fill-current text-gray-500" />
+            <ApplicationLogo class="h-40 w-auto fill-current text-gray-500" />
             </Link>
         </div>
+        <h1 class="mt-4 text-xl">Reserva de Hamacas</h1>
 
         <div class="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg">
             <slot />
