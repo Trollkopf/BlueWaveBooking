@@ -1,3 +1,3 @@
 <template>
-    <img src="/images/logo-negro.webp" alt="logo bluewavebooking">
+    <img src="/images/logocompleto.png" alt="logo bluewavebooking">
 </template>

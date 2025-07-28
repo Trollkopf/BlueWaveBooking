@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{d as e,o as c}from"./app-iwPyhcQ0.js";const r={},t={src:"/images/logo-negro.webp",alt:"logo bluewavebooking"};function n(s,a){return c(),e("img",t)}const l=o(r,[["render",n]]);export{l as A};
