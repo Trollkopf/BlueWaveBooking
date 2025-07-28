@@ -1,0 +1,561 @@
+{
+  "_AdminLayout-CkQzMjMY.js": {
+    "file": "assets/AdminLayout-CkQzMjMY.js",
+    "name": "AdminLayout",
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ],
+    "css": [
+      "assets/AdminLayout-tn0RQdqM.css"
+    ]
+  },
+  "_AdminLayout-tn0RQdqM.css": {
+    "file": "assets/AdminLayout-tn0RQdqM.css",
+    "src": "_AdminLayout-tn0RQdqM.css"
+  },
+  "_ApplicationLogo-sx4ybqdA.js": {
+    "file": "assets/ApplicationLogo-sx4ybqdA.js",
+    "name": "ApplicationLogo",
+    "imports": [
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_AuthenticatedLayout-tIlk376u.js": {
+    "file": "assets/AuthenticatedLayout-tIlk376u.js",
+    "name": "AuthenticatedLayout",
+    "imports": [
+      "_ApplicationLogo-sx4ybqdA.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_BackofficeLayout-mxtjcB0d.js": {
+    "file": "assets/BackofficeLayout-mxtjcB0d.js",
+    "name": "BackofficeLayout",
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "_GuestLayout-CW2Wrcar.js": {
+    "file": "assets/GuestLayout-CW2Wrcar.js",
+    "name": "GuestLayout",
+    "imports": [
+      "_ApplicationLogo-sx4ybqdA.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_PrimaryButton-BQ0CNSf_.js": {
+    "file": "assets/PrimaryButton-BQ0CNSf_.js",
+    "name": "PrimaryButton",
+    "imports": [
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_TextInput-8GNFkBTu.js": {
+    "file": "assets/TextInput-8GNFkBTu.js",
+    "name": "TextInput",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "__plugin-vue_export-helper-DlAUqK2U.js": {
+    "file": "assets/_plugin-vue_export-helper-DlAUqK2U.js",
+    "name": "_plugin-vue_export-helper"
+  },
+  "_debounce-CiJp1Z13.js": {
+    "file": "assets/debounce-CiJp1Z13.js",
+    "name": "debounce",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Bookings.vue": {
+    "file": "assets/Bookings-CpbGo9h7.js",
+    "name": "Bookings",
+    "src": "resources/js/Pages/Admin/Bookings.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AdminLayout-CkQzMjMY.js",
+      "resources/js/Pages/Admin/components/ReservationsList.vue",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/Bookings-C_piO6SA.css"
+    ]
+  },
+  "resources/js/Pages/Admin/Dashboard.vue": {
+    "file": "assets/Dashboard-LL7ji0rN.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Admin/Dashboard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AdminLayout-CkQzMjMY.js",
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ],
+    "css": [
+      "assets/Dashboard-B7zwLvif.css"
+    ]
+  },
+  "resources/js/Pages/Admin/Hammocks.vue": {
+    "file": "assets/Hammocks-CYD7ebU7.js",
+    "name": "Hammocks",
+    "src": "resources/js/Pages/Admin/Hammocks.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AdminLayout-CkQzMjMY.js",
+      "resources/js/Pages/Admin/components/HammocksGrid.vue",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/Hammocks-D3U9EF92.css"
+    ]
+  },
+  "resources/js/Pages/Admin/Managers.vue": {
+    "file": "assets/Managers-U0lg-YuP.js",
+    "name": "Managers",
+    "src": "resources/js/Pages/Admin/Managers.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AdminLayout-CkQzMjMY.js",
+      "resources/js/Pages/Admin/components/GestionGerentes.vue",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js",
+      "_debounce-CiJp1Z13.js"
+    ],
+    "css": [
+      "assets/Managers-ID5XPKnG.css"
+    ]
+  },
+  "resources/js/Pages/Admin/Settings.vue": {
+    "file": "assets/Settings-lrBcD7aT.js",
+    "name": "Settings",
+    "src": "resources/js/Pages/Admin/Settings.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AdminLayout-CkQzMjMY.js",
+      "resources/js/Pages/Admin/components/AdminSettings.vue",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/Settings-Da3ZLNKl.css"
+    ]
+  },
+  "resources/js/Pages/Admin/Users.vue": {
+    "file": "assets/Users-DMBSGgHS.js",
+    "name": "Users",
+    "src": "resources/js/Pages/Admin/Users.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AdminLayout-CkQzMjMY.js",
+      "resources/js/Pages/Admin/components/UsersList.vue",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js",
+      "_debounce-CiJp1Z13.js"
+    ],
+    "css": [
+      "assets/Users-eSfUVF2o.css"
+    ]
+  },
+  "resources/js/Pages/Admin/components/AdminSettings.vue": {
+    "file": "assets/AdminSettings-BzAXETHq.js",
+    "name": "AdminSettings",
+    "src": "resources/js/Pages/Admin/components/AdminSettings.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ],
+    "css": [
+      "assets/AdminSettings-Cdev6VI_.css"
+    ]
+  },
+  "resources/js/Pages/Admin/components/GestionGerentes.vue": {
+    "file": "assets/GestionGerentes-EvkAkbtU.js",
+    "name": "GestionGerentes",
+    "src": "resources/js/Pages/Admin/components/GestionGerentes.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_debounce-CiJp1Z13.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ],
+    "css": [
+      "assets/GestionGerentes-CAMWkZca.css"
+    ]
+  },
+  "resources/js/Pages/Admin/components/HammocksGrid.vue": {
+    "file": "assets/HammocksGrid-kIgdBAc3.js",
+    "name": "HammocksGrid",
+    "src": "resources/js/Pages/Admin/components/HammocksGrid.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ],
+    "css": [
+      "assets/HammocksGrid-DUGtfpxY.css"
+    ]
+  },
+  "resources/js/Pages/Admin/components/HammocksStatus.vue": {
+    "file": "assets/HammocksStatus-Dv9hx73j.js",
+    "name": "HammocksStatus",
+    "src": "resources/js/Pages/Admin/components/HammocksStatus.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/HammocksStatus-Dcc0uIpz.css"
+    ]
+  },
+  "resources/js/Pages/Admin/components/ReservationsList.vue": {
+    "file": "assets/ReservationsList-DXTH1hID.js",
+    "name": "ReservationsList",
+    "src": "resources/js/Pages/Admin/components/ReservationsList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Admin/components/ReservationsTable.vue": {
+    "file": "assets/ReservationsTable-Bti7laIs.js",
+    "name": "ReservationsTable",
+    "src": "resources/js/Pages/Admin/components/ReservationsTable.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ],
+    "css": [
+      "assets/ReservationsTable-BN-tPitF.css"
+    ]
+  },
+  "resources/js/Pages/Admin/components/StatsCard.vue": {
+    "file": "assets/StatsCard-Cnv0ZIam.js",
+    "name": "StatsCard",
+    "src": "resources/js/Pages/Admin/components/StatsCard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/StatsCard-BctppNFL.css"
+    ]
+  },
+  "resources/js/Pages/Admin/components/UsersList.vue": {
+    "file": "assets/UsersList-XzGCgUbh.js",
+    "name": "UsersList",
+    "src": "resources/js/Pages/Admin/components/UsersList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_debounce-CiJp1Z13.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ],
+    "css": [
+      "assets/UsersList-oGmDIM0J.css"
+    ]
+  },
+  "resources/js/Pages/Auth/ConfirmPassword.vue": {
+    "file": "assets/ConfirmPassword-BQl4dvvC.js",
+    "name": "ConfirmPassword",
+    "src": "resources/js/Pages/Auth/ConfirmPassword.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-CW2Wrcar.js",
+      "_TextInput-8GNFkBTu.js",
+      "_PrimaryButton-BQ0CNSf_.js",
+      "_ApplicationLogo-sx4ybqdA.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.vue": {
+    "file": "assets/ForgotPassword-CiyfDVT5.js",
+    "name": "ForgotPassword",
+    "src": "resources/js/Pages/Auth/ForgotPassword.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-CW2Wrcar.js",
+      "_TextInput-8GNFkBTu.js",
+      "_PrimaryButton-BQ0CNSf_.js",
+      "_ApplicationLogo-sx4ybqdA.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.vue": {
+    "file": "assets/Login-C4K0BUS9.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-CW2Wrcar.js",
+      "_TextInput-8GNFkBTu.js",
+      "_PrimaryButton-BQ0CNSf_.js",
+      "_ApplicationLogo-sx4ybqdA.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.vue": {
+    "file": "assets/Register-asWi1sza.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-CW2Wrcar.js",
+      "_TextInput-8GNFkBTu.js",
+      "_PrimaryButton-BQ0CNSf_.js",
+      "_ApplicationLogo-sx4ybqdA.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.vue": {
+    "file": "assets/ResetPassword-CXUqKqKr.js",
+    "name": "ResetPassword",
+    "src": "resources/js/Pages/Auth/ResetPassword.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-CW2Wrcar.js",
+      "_TextInput-8GNFkBTu.js",
+      "_PrimaryButton-BQ0CNSf_.js",
+      "_ApplicationLogo-sx4ybqdA.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.vue": {
+    "file": "assets/VerifyEmail-DQdDe0DI.js",
+    "name": "VerifyEmail",
+    "src": "resources/js/Pages/Auth/VerifyEmail.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-CW2Wrcar.js",
+      "_PrimaryButton-BQ0CNSf_.js",
+      "_ApplicationLogo-sx4ybqdA.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Backoffice/Dashboard.vue": {
+    "file": "assets/Dashboard-DC9ce-w7.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Backoffice/Dashboard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_BackofficeLayout-mxtjcB0d.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ],
+    "css": [
+      "assets/Dashboard-CwWNfySD.css"
+    ]
+  },
+  "resources/js/Pages/Backoffice/Profile.vue": {
+    "file": "assets/Profile-BQ9wA-ZV.js",
+    "name": "Profile",
+    "src": "resources/js/Pages/Backoffice/Profile.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_BackofficeLayout-mxtjcB0d.js",
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Backoffice/Reservations.vue": {
+    "file": "assets/Reservations-BiP7yMqO.js",
+    "name": "Reservations",
+    "src": "resources/js/Pages/Backoffice/Reservations.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_BackofficeLayout-mxtjcB0d.js",
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Dashboard.vue": {
+    "file": "assets/Dashboard-Ct1QGeFI.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Dashboard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AuthenticatedLayout-tIlk376u.js",
+      "resources/js/app.js",
+      "_ApplicationLogo-sx4ybqdA.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/NotFound.vue": {
+    "file": "assets/NotFound-CXPDvvuk.js",
+    "name": "NotFound",
+    "src": "resources/js/Pages/NotFound.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Edit.vue": {
+    "file": "assets/Edit-CM0gzatX.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Profile/Edit.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AuthenticatedLayout-tIlk376u.js",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.vue",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue",
+      "resources/js/app.js",
+      "_ApplicationLogo-sx4ybqdA.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "_TextInput-8GNFkBTu.js",
+      "_PrimaryButton-BQ0CNSf_.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/DeleteUserForm.vue": {
+    "file": "assets/DeleteUserForm-jmWWiETk.js",
+    "name": "DeleteUserForm",
+    "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "_TextInput-8GNFkBTu.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue": {
+    "file": "assets/UpdatePasswordForm-CiKEUHuW.js",
+    "name": "UpdatePasswordForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_TextInput-8GNFkBTu.js",
+      "_PrimaryButton-BQ0CNSf_.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue": {
+    "file": "assets/UpdateProfileInformationForm-B1HPU8qt.js",
+    "name": "UpdateProfileInformationForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_TextInput-8GNFkBTu.js",
+      "_PrimaryButton-BQ0CNSf_.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Welcome/Components/BeachBackground.vue": {
+    "file": "assets/BeachBackground-jY91cebr.js",
+    "name": "BeachBackground",
+    "src": "resources/js/Pages/Welcome/Components/BeachBackground.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Welcome/Components/HammockGrid.vue": {
+    "file": "assets/HammockGrid-DYAlaWcX.js",
+    "name": "HammockGrid",
+    "src": "resources/js/Pages/Welcome/Components/HammockGrid.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Welcome/Components/NavBar.vue": {
+    "file": "assets/NavBar-COCdpFOs.js",
+    "name": "NavBar",
+    "src": "resources/js/Pages/Welcome/Components/NavBar.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Welcome/Components/ReservationModal.vue": {
+    "file": "assets/ReservationModal-Bo4nf2B_.js",
+    "name": "ReservationModal",
+    "src": "resources/js/Pages/Welcome/Components/ReservationModal.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/Pages/Welcome/Welcome.vue": {
+    "file": "assets/Welcome-4a69cU50.js",
+    "name": "Welcome",
+    "src": "resources/js/Pages/Welcome/Welcome.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "resources/js/Pages/Welcome/Components/NavBar.vue",
+      "resources/js/Pages/Welcome/Components/BeachBackground.vue",
+      "resources/js/Pages/Welcome/Components/HammockGrid.vue",
+      "resources/js/Pages/Welcome/Components/ReservationModal.vue",
+      "__plugin-vue_export-helper-DlAUqK2U.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-iwPyhcQ0.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Admin/Bookings.vue",
+      "resources/js/Pages/Admin/Dashboard.vue",
+      "resources/js/Pages/Admin/Hammocks.vue",
+      "resources/js/Pages/Admin/Managers.vue",
+      "resources/js/Pages/Admin/Settings.vue",
+      "resources/js/Pages/Admin/Users.vue",
+      "resources/js/Pages/Admin/components/AdminSettings.vue",
+      "resources/js/Pages/Admin/components/GestionGerentes.vue",
+      "resources/js/Pages/Admin/components/HammocksGrid.vue",
+      "resources/js/Pages/Admin/components/HammocksStatus.vue",
+      "resources/js/Pages/Admin/components/ReservationsList.vue",
+      "resources/js/Pages/Admin/components/ReservationsTable.vue",
+      "resources/js/Pages/Admin/components/StatsCard.vue",
+      "resources/js/Pages/Admin/components/UsersList.vue",
+      "resources/js/Pages/Auth/ConfirmPassword.vue",
+      "resources/js/Pages/Auth/ForgotPassword.vue",
+      "resources/js/Pages/Auth/Login.vue",
+      "resources/js/Pages/Auth/Register.vue",
+      "resources/js/Pages/Auth/ResetPassword.vue",
+      "resources/js/Pages/Auth/VerifyEmail.vue",
+      "resources/js/Pages/Backoffice/Dashboard.vue",
+      "resources/js/Pages/Backoffice/Profile.vue",
+      "resources/js/Pages/Backoffice/Reservations.vue",
+      "resources/js/Pages/Dashboard.vue",
+      "resources/js/Pages/NotFound.vue",
+      "resources/js/Pages/Profile/Edit.vue",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.vue",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue",
+      "resources/js/Pages/Welcome/Components/BeachBackground.vue",
+      "resources/js/Pages/Welcome/Components/HammockGrid.vue",
+      "resources/js/Pages/Welcome/Components/NavBar.vue",
+      "resources/js/Pages/Welcome/Components/ReservationModal.vue",
+      "resources/js/Pages/Welcome/Welcome.vue"
+    ],
+    "css": [
+      "assets/app-DMP3B5-G.css"
+    ]
+  }
+}
